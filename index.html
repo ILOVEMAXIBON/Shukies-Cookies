@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#241006">
+  <meta name="description" content="Shukies Cookies by Max Shukla. Small-batch cookies, limited weekly drops and local café partnerships.">
+  <meta property="og:title" content="Shukies Cookies — Small batches. Big cravings.">
+  <meta property="og:description" content="Meet the cookies, catch the next weekly drop or ask about stocking Shukies Cookies at your café.">
+  <meta property="og:image" content="assets/shukies-logo.png">
+  <title>Shukies Cookies | Small batches. Big cravings.</title>
+  <link rel="icon" type="image/png" href="assets/shukies-logo.png">
+  <style>
+    :root {
+      --ink: #241006; --deep: #160a04; --brown: #4a210d; --caramel: #d98228;
+      --gold: #f5b64d; --cream: #fff3df; --paper: #fffaf2; --muted: #765b49;
+      --line: #ead8c2; --white: #fff; --shadow: 0 18px 50px #34170620;
+      --serif: Georgia, 'Times New Roman', serif; --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+    body.locked { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { width: min(1160px, calc(100% - 44px)); margin-inline: auto; }
+    .announcement { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 14px; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .nav-shell { position: sticky; top: 0; z-index: 20; background: #fffaf2ee; backdrop-filter: blur(16px); border-bottom: 1px solid #ead8c280; }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 1000; letter-spacing: -.045em; font-size: 17px; }
+    .brand-mark { width: 39px; height: 39px; object-fit: cover; border-radius: 11px; border: 1px solid #d79a54; }
+    .navlinks { display: flex; gap: 27px; align-items: center; font-size: 12px; font-weight: 800; color: #60412d; }
+    .navlinks a:hover, .footer a:hover { color: var(--caramel); }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+    .nav-cta, .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; padding: 13px 20px; background: var(--ink); color: white; font-weight: 900; font-size: 12px; transition: .2s ease; }
+    .nav-cta:hover, .btn:hover { background: var(--caramel); color: var(--ink); transform: translateY(-2px); }
+    .cart-button { position: relative; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: white; color: var(--ink); border-radius: 999px; padding: 11px 15px; font-size: 12px; font-weight: 900; }
+    .cart-count { min-width: 20px; height: 20px; display: inline-grid; place-items: center; border-radius: 50%; background: var(--gold); font-size: 10px; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: white; border-radius: 50%; width: 42px; height: 42px; font-size: 18px; }
+    .hero { position: relative; overflow: hidden; background: radial-gradient(circle at 83% 15%, #6b351b 0, #321608 41%, #1b0b04 100%); color: white; padding: 62px 0 70px; }
+    .hero:before, .hero:after { content: ''; position: absolute; border: 1px solid #f5b64d30; border-radius: 50%; width: 610px; height: 610px; right: -210px; top: -300px; }
+    .hero:after { width: 450px; height: 450px; right: -125px; top: -220px; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .92fr; align-items: center; gap: 45px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--gold); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 1000; }
+    .eyebrow:before { content: ''; width: 23px; height: 2px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-family: var(--serif); font-size: clamp(52px, 6.8vw, 86px); line-height: .96; letter-spacing: -.06em; margin: 21px 0; }
+    h1 em { color: var(--gold); font-style: normal; }
+    .hero-copy { color: #f0ddc8; font-size: 16px; line-height: 1.8; max-width: 500px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+    .btn.gold { background: var(--gold); color: var(--ink); }
+    .btn.gold:hover { background: #ffd17c; }
+    .btn.ghost { background: transparent; border: 1px solid #ffffff65; }
+    .hero-note { margin-top: 23px; color: #d7bda4; font-size: 11px; letter-spacing: .03em; }
+    .hero-art { position: relative; display: grid; place-items: center; }
+    .hero-logo { width: min(100%, 530px); height: auto; border-radius: 13px; border: 3px solid #f5b64d; box-shadow: 0 28px 80px #0008; transform: rotate(1.5deg); }
+    .orbit { position: absolute; z-index: 2; font-size: 39px; filter: drop-shadow(0 8px 7px #0008); }
+    .orbit.one { top: -18px; right: 2%; transform: rotate(18deg); }
+    .orbit.two { bottom: -22px; left: -12px; transform: rotate(-18deg); }
+    .ticker { overflow: hidden; white-space: nowrap; background: var(--gold); color: #2c1307; padding: 13px 0; font-size: 11px; font-weight: 1000; letter-spacing: .16em; text-transform: uppercase; }
+    .ticker span { padding: 0 24px; }
+    .section { padding: 88px 0; }
+    .section-head { max-width: 690px; text-align: center; margin: 0 auto 40px; }
+    .kicker { color: #b66a22; text-transform: uppercase; letter-spacing: .18em; font-size: 10px; font-weight: 1000; }
+    .section h2, .story-copy h2, .partner h2, .contact h2 { font-family: var(--serif); font-size: clamp(37px, 4.4vw, 55px); line-height: 1.02; letter-spacing: -.05em; margin: 11px 0 15px; }
+    .section-head p, .muted { color: var(--muted); line-height: 1.75; }
+    .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; }
+    .product { background: white; border: 1px solid var(--line); border-radius: 17px; overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
+    .product:hover { transform: translateY(-5px); box-shadow: 0 23px 55px #3417062b; }
+    .product-art { height: 190px; display: grid; place-items: center; position: relative; overflow: hidden; background: radial-gradient(circle at 50% 40%, #f8d59e, #e8a34c 72%, #bd702b); }
+    .product-art:before { content: ''; position: absolute; width: 145px; height: 145px; border-radius: 50%; background: #713511; box-shadow: inset 0 0 0 8px #a65b21, inset 0 0 0 14px #d98a39, 0 16px 25px #5c290b55; }
+    .product-art .cookie { position: relative; z-index: 1; font-size: 86px; filter: drop-shadow(0 8px 5px #55250855); transform: rotate(-12deg); }
+    .product:nth-child(2) .product-art { background: radial-gradient(circle at 50% 40%, #f4d9c4, #bd8060); }
+    .product:nth-child(2) .product-art:before { background: #3b1a10; box-shadow: inset 0 0 0 8px #68321b, inset 0 0 0 14px #a35b35, 0 16px 25px #40180e55; }
+    .product:nth-child(3) .product-art { background: radial-gradient(circle at 50% 40%, #fff0bf, #d7a34c); }
+    .product:nth-child(3) .product-art:before { background: #aa642d; box-shadow: inset 0 0 0 8px #d69a4b, inset 0 0 0 14px #f0c77c, 0 16px 25px #7c4b1b55; }
+    .product:nth-child(4) .product-art { background: radial-gradient(circle at 50% 40%, #e5d3b9, #9d704e); }
+    .product:nth-child(4) .product-art:before { background: #4b2716; box-shadow: inset 0 0 0 8px #80502e, inset 0 0 0 14px #c28a4a, 0 16px 25px #40180e55; }
+    .product-body { padding: 19px; }
+    .product-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .product h3 { font-family: var(--serif); font-size: 20px; line-height: 1.05; margin: 0; }
+    .tag { flex: 0 0 auto; background: #fff0d8; color: #96531c; padding: 6px 8px; border-radius: 30px; font-size: 8px; text-transform: uppercase; font-weight: 1000; letter-spacing: .08em; }
+    .product p { min-height: 58px; margin: 13px 0 16px; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .product-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .price { font-weight: 1000; font-size: 16px; }
+    .add { border: 0; border-radius: 30px; background: var(--ink); color: white; padding: 10px 13px; font-size: 10px; font-weight: 950; }
+    .add:hover { background: var(--caramel); color: var(--ink); }
+    .sample-note { text-align: center; margin: 23px 0 0; color: #8c7059; font-size: 10px; line-height: 1.6; }
+    .story { background: #f4e5d0; }
+    .story-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 62px; align-items: center; }
+    .story-card { background: var(--ink); color: white; padding: 35px; border-radius: 19px; box-shadow: var(--shadow); position: relative; overflow: hidden; min-height: 285px; display: flex; flex-direction: column; justify-content: center; }
+    .story-card:after { content: '🍪'; position: absolute; font-size: 155px; right: -12px; bottom: -48px; opacity: .13; }
+    .story-card strong { font-family: var(--serif); font-size: 31px; line-height: 1.14; display: block; max-width: 300px; margin: 16px 0 10px; }
+    .story-card p { color: #e4c9ac; line-height: 1.7; font-size: 12px; max-width: 330px; margin: 0; }
+    .story-copy p, .partner-copy p, .contact-copy p { color: var(--muted); line-height: 1.8; font-size: 13px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .pill { border: 1px solid #d8b995; border-radius: 30px; padding: 8px 12px; font-size: 10px; font-weight: 900; color: #70431f; }
+    .drop { background: var(--ink); color: white; text-align: center; padding: 75px 0; }
+    .drop h2 { font-family: var(--serif); font-size: clamp(39px, 5vw, 60px); letter-spacing: -.05em; margin: 12px 0; }
+    .drop p { color: #e2c7aa; max-width: 570px; margin: 0 auto; line-height: 1.75; font-size: 13px; }
+    .drop .btn { margin-top: 23px; }
+    .partner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .partner-panel { background: #f2dfc4; padding: 32px; border-radius: 18px; }
+    .partner-panel h3 { font-family: var(--serif); font-size: 28px; line-height: 1.1; margin: 0 0 12px; }
+    .partner-panel p { color: var(--muted); line-height: 1.7; font-size: 12px; }
+    .partner-list { list-style: none; padding: 0; margin: 18px 0 0; }
+    .partner-list li { padding: 10px 0; border-bottom: 1px solid #ddc5a7; font-size: 11px; font-weight: 850; }
+    .partner-list li:before { content: '✦'; color: #bd702b; margin-right: 10px; }
+    .contact { background: #fff4e3; }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; }
+    .contact-links { display: grid; gap: 10px; margin-top: 22px; }
+    .contact-link { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 850; }
+    .contact-link span { display: inline-grid; place-items: center; width: 33px; height: 33px; border-radius: 50%; background: #f1dfc8; }
+    .contact-form { background: white; border: 1px solid var(--line); border-radius: 17px; padding: 25px; box-shadow: var(--shadow); }
+    label { display: block; font-size: 10px; font-weight: 900; margin: 12px 0 6px; color: #6a4b36; }
+    input, textarea, select { width: 100%; border: 1px solid #e4d2bd; border-radius: 9px; padding: 12px; font-size: 12px; background: #fffdf9; color: var(--ink); }
+    textarea { min-height: 92px; resize: vertical; }
+    .contact-form .btn { margin-top: 15px; width: 100%; }
+    .footer { background: #160a04; color: #e9d3bc; padding: 30px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .footer small { color: #b99c80; font-size: 10px; }
+    .footer-socials { display: flex; gap: 16px; font-size: 11px; font-weight: 850; }
+    .toast { position: fixed; bottom: 20px; left: 50%; transform: translate(-50%, 18px); background: var(--gold); color: var(--ink); padding: 12px 18px; border-radius: 30px; font-size: 11px; font-weight: 950; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: .2s; z-index: 60; white-space: nowrap; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .cart-overlay { position: fixed; inset: 0; z-index: 40; background: #160a04a8; opacity: 0; pointer-events: none; transition: opacity .22s; }
+    .cart-overlay.open { opacity: 1; pointer-events: auto; }
+    .cart-panel { position: fixed; z-index: 50; top: 0; right: 0; height: 100dvh; width: min(440px, 100%); background: var(--paper); box-shadow: -20px 0 60px #0003; transform: translateX(105%); transition: transform .25s ease; display: flex; flex-direction: column; }
+    .cart-panel.open { transform: translateX(0); }
+    .cart-head { padding: 23px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+    .cart-head h2 { font-family: var(--serif); font-size: 28px; margin: 0; }
+    .close-cart { border: 1px solid var(--line); width: 37px; height: 37px; border-radius: 50%; background: white; font-size: 18px; }
+    .cart-items { padding: 14px 22px; overflow: auto; flex: 1; }
+    .empty-cart { text-align: center; padding: 60px 10px; color: var(--muted); }
+    .empty-cart span { display: block; font-size: 43px; margin-bottom: 12px; }
+    .cart-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .cart-row strong { display: block; font-family: var(--serif); font-size: 17px; }
+    .cart-row small { color: var(--muted); font-size: 10px; }
+    .qty { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; }
+    .qty button { width: 25px; height: 25px; border: 1px solid var(--line); border-radius: 50%; background: white; font-weight: 900; }
+    .cart-row-price { font-size: 12px; font-weight: 950; text-align: right; }
+    .cart-foot { padding: 20px 23px 24px; border-top: 1px solid var(--line); background: white; }
+    .cart-total { display: flex; justify-content: space-between; font-size: 15px; font-weight: 1000; margin-bottom: 8px; }
+    .cart-foot p { color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .cart-foot .btn { width: 100%; }
+    .checkout-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10px; margin: 12px 0 15px; }
+    .checkout-fields .full { grid-column: 1 / -1; }
+    .checkout-fields input[type="radio"] { width: auto; accent-color: var(--caramel); margin: 0 5px 0 0; }
+    .checkout-note { margin: 8px 0 13px !important; padding: 10px 12px; border: 1px solid #ead8c2; border-radius: 10px; background: #fff8ec; color: #765b49 !important; font-size: 9px !important; line-height: 1.55 !important; }
+    .service-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin: 23px auto 0; }
+    .service-chip { border: 1px solid #d8b995; border-radius: 30px; padding: 8px 12px; background: #fff8ec; color: #70431f; font-size: 10px; font-weight: 900; }
+    .mobile-menu { display: none; }
+    @media (max-width: 920px) { .products { grid-template-columns: repeat(2, 1fr); } .navlinks { gap: 16px; } .hero-grid { gap: 25px; } }
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 32px, 1160px); }
+      .nav { min-height: 67px; }
+      .navlinks { display: none; }
+      .menu-toggle { display: inline-grid; place-items: center; }
+      .nav-actions .nav-cta { display: none; }
+      .mobile-menu { position: absolute; display: none; top: 67px; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 13px 20px 18px; }
+      .mobile-menu.open { display: grid; }
+      .mobile-menu a { padding: 11px 2px; font-size: 13px; font-weight: 850; border-bottom: 1px solid var(--line); }
+      .hero { padding: 46px 0 55px; }
+      .hero-grid, .story-grid, .partner, .contact-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 27px; }
+      .hero-art { padding: 0 8px; }
+      .hero-logo { width: min(100%, 480px); }
+      .orbit { font-size: 30px; }
+      .section { padding: 66px 0; }
+      .story-grid, .partner, .contact-grid { gap: 27px; }
+    }
+    @media (max-width: 480px) {
+      .brand { font-size: 14px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .cart-button { padding: 9px 11px; }
+      .hero h1 { font-size: clamp(48px, 14vw, 66px); }
+      .hero-copy { font-size: 14px; }
+      .products { grid-template-columns: 1fr; }
+      .product-art { height: 200px; }
+      .product p { min-height: 0; }
+      .section { padding: 58px 0; }
+      .story-card, .partner-panel { padding: 25px; }
+      .contact-form { padding: 19px; }
+      .footer-inner { align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="announcement">Freshly baked energy · Limited weekly batches · Big cookie cravings</div>
+  <div class="nav-shell">
+    <header class="wrap nav">
+      <a class="brand" href="#home" aria-label="Shukies Cookies home"><img class="brand-mark" src="assets/shukies-logo.png" alt=""><span>SHUKIES COOKIES</span></a>
+      <nav class="navlinks" aria-label="Main navigation"><a href="#cookies">The cookies</a><a href="#story">Our story</a><a href="#drops">Weekly drops</a><a href="#partners">Café partners</a></nav>
+      <div class="nav-actions"><button class="cart-button" id="openCart" aria-label="Open shopping cart">Bag <span class="cart-count" id="cartCount">0</span></button><a class="nav-cta" href="#contact">Say hello ↗</a><button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button></div>
+    </header>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation"><a href="#cookies">The cookies</a><a href="#story">Our story</a><a href="#drops">Weekly drops</a><a href="#partners">Café partners</a><a href="#contact">Contact</a></nav>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Meet your new cookie obsession</div>
+          <h1>Small batches.<br><em>Big</em> cravings.</h1>
+          <p class="hero-copy">Big cookie energy, baked into every batch. Get ready for chunky favourites, limited weekly drops and treats made to be shared (or kept all to yourself).</p>
+          <div class="hero-actions"><a class="btn gold" href="#cookies">Find your favourite ↓</a><a class="btn ghost" href="#drops">Catch the next drop</a></div>
+          <div class="hero-note">✦ A little chocolate. A lot of happiness. ✦</div>
+        </div>
+        <div class="hero-art"><span class="orbit one" aria-hidden="true">🍪</span><img class="hero-logo" src="assets/shukies-logo.png" alt="Max Shukla's Shukies Cookies logo"><span class="orbit two" aria-hidden="true">🍪</span></div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><span>Freshly baked ✦</span><span>Small batches ✦</span><span>Big cookie energy ✦</span><span>Made to be shared ✦</span><span>Freshly baked ✦</span></div>
+
+    <section class="section" id="cookies">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">The good stuff</div><h2>Pick your cookie sidekick.</h2><p>From classic choc chip to extra-chocolatey favourites, there's a little something for every craving. Add a few to your bag to build a sample order.</p></div>
+        <div class="products" id="productGrid">
+          <article class="product"><div class="product-art"><span class="cookie" aria-hidden="true">🍪</span></div><div class="product-body"><div class="product-top"><h3>Choc Chip Classic</h3><span class="tag">The OG</span></div><p>Golden edges, soft centre and generous chocolate chunks in every bite.</p><div class="product-bottom"><span class="price">$5.50</span><button class="add" data-id="classic">Add to bag +</button></div></div></article>
+          <article class="product"><div class="product-art"><span class="cookie" aria-hidden="true">🍪</span></div><div class="product-body"><div class="product-top"><h3>Double Choc</h3><span class="tag">Extra rich</span></div><p>A chocolate lover's dream with a rich cocoa dough and chocolate pieces.</p><div class="product-bottom"><span class="price">$6.00</span><button class="add" data-id="double">Add to bag +</button></div></div></article>
+          <article class="product"><div class="product-art"><span class="cookie" aria-hidden="true">🍪</span></div><div class="product-body"><div class="product-top"><h3>Golden Biscoff</h3><span class="tag">Crowd fave</span></div><p>A buttery cookie idea with a caramelised biscuit twist.</p><div class="product-bottom"><span class="price">$6.50</span><button class="add" data-id="biscoff">Add to bag +</button></div></div></article>
+          <article class="product"><div class="product-art"><span class="cookie" aria-hidden="true">🍪</span></div><div class="product-body"><div class="product-top"><h3>Weekly Surprise</h3><span class="tag">Limited drop</span></div><p>A rotating flavour for adventurous cookie fans. New surprises each drop.</p><div class="product-bottom"><span class="price">$6.50</span><button class="add" data-id="surprise">Add to bag +</button></div></div></article>
+        </div>
+        <p class="sample-note">Sample menu and prices for the website preview. Confirm the real recipes, availability, prices and allergen details before accepting customer orders.</p>
+      </div>
+    </section>
+
+    <section class="section story" id="story">
+      <div class="wrap story-grid">
+        <div class="story-card"><div class="eyebrow">Baked with big plans</div><strong>More than a cookie. It's a whole experience.</strong><p>Good cookies get remembered. Great cookies get talked about, photographed and shared.</p></div>
+        <div class="story-copy"><div class="kicker">The Shukies idea</div><h2>Made to stand out. Made to be shared.</h2><p>Shukies Cookies is being built around small, limited batches and a brand people get excited to discover. From the first bite to the packaging, every detail should feel special.</p><p>The plan is to grow through weekly online drops, eye-catching social content and exclusive partnerships with local cafés and stores.</p><div class="pill-row"><span class="pill">Small-batch bakes</span><span class="pill">Limited releases</span><span class="pill">Share-worthy packaging</span></div></div>
+      </div>
+    </section>
+
+    <section class="drop" id="drops"><div class="wrap"><div class="eyebrow" style="justify-content:center">Blink and they'll be gone</div><h2>Next batch. New cravings.</h2><p>The idea is simple: release limited batches online each week, share the flavours on social media and let the cookie fans get in early. Follow along so you don't miss the next drop.</p><a class="btn gold" href="https://www.tiktok.com/@ilovemaxibons" target="_blank" rel="noopener">Follow the cookie journey ↗</a><div class="service-strip" aria-label="Planned delivery partners"><span class="service-chip">Uber Eats · Coming soon</span><span class="service-chip">DoorDash · Coming soon</span></div></div></section>
+
+    <section class="section" id="partners"><div class="wrap partner"><div class="partner-copy"><div class="kicker">Better together</div><h2>Your café. Our cookies. A perfect match.</h2><p>We're looking to connect with great local cafés and stores that want something exciting on the counter. The partnership vision is to work with selected venues, create local exclusivity and give customers a new favourite treat.</p><a class="btn" href="#contact">Talk partnerships ↗</a></div><div class="partner-panel"><h3>Let's make room on the counter.</h3><p>Interested in stocking Shukies Cookies? Get in touch and tell us a little about your venue.</p><ul class="partner-list"><li>Exclusive local café and store partnerships</li><li>Small-batch supply and special releases</li><li>Packaging customers will want to show off</li><li>Room to grow into delivery partnerships</li></ul></div></div></section>
+
+    <section class="section contact" id="contact"><div class="wrap contact-grid"><div class="contact-copy"><div class="kicker">Say hello</div><h2>Let's make something sweet happen.</h2><p>Questions about cookies, the next drop or stocking Shukies at your café? Send a message and let's chat.</p><div class="contact-links"><a class="contact-link" href="mailto:max.shukla20@gmail.com"><span>✉</span> max.shukla20@gmail.com</a><a class="contact-link" href="https://www.youtube.com/@ilovemaxibons" target="_blank" rel="noopener"><span>▶</span> YouTube · @ilovemaxibons</a><a class="contact-link" href="https://www.tiktok.com/@ilovemaxibons_rl" target="_blank" rel="noopener"><span>♪</span> TikTok · @ilovemaxibons_rl</a></div></div>
+      <form class="contact-form" id="contactForm"><div class="kicker">Drop us a message</div><label for="contactName">Your name</label><input id="contactName" name="name" autocomplete="name" placeholder="Name" required><label for="contactEmail">Email address</label><input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required><label for="contactReason">I'm getting in touch about...</label><select id="contactReason" name="reason"><option>Cookie order</option><option>Weekly drop updates</option><option>Café / store partnership</option><option>Something else</option></select><label for="contactMessage">Message</label><textarea id="contactMessage" name="message" placeholder="Tell us what's on your mind..."></textarea><button class="btn" type="submit">Prepare email ↗</button><p style="font-size:9px;color:#8b725e;line-height:1.5;margin:10px 0 0">This form opens an email draft addressed to Shukies Cookies. It does not send anything until you press Send in your email app.</p></form>
+    </div></section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="#home"><img class="brand-mark" src="assets/shukies-logo.png" alt=""><span>SHUKIES COOKIES</span></a><small>© <span id="year"></span> Shukies Cookies · Made with a little extra chocolate.</small><div class="footer-socials"><a href="https://www.youtube.com/@ilovemaxibons" target="_blank" rel="noopener">YouTube</a><a href="https://www.tiktok.com/@ilovemaxibons_rl" target="_blank" rel="noopener">TikTok</a><a href="mailto:max.shukla20@gmail.com">Email</a></div></div></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="Shopping bag" aria-hidden="true">
+    <div class="cart-head"><h2>Your cookie bag</h2><button class="close-cart" id="closeCart" aria-label="Close shopping bag">×</button></div>
+    <div class="cart-items" id="cartItems"><div class="empty-cart"><span>🍪</span>Your bag is waiting for something delicious.</div></div>
+    <div class="cart-foot"><div class="cart-total"><span>Sample subtotal</span><span id="cartTotal">$0.00</span></div><p>Prices shown are sample prices. Final availability, delivery fees and total will be confirmed before payment.</p>
+      <div class="checkout-fields">
+        <div class="full"><label for="orderName">Your name</label><input id="orderName" placeholder="Name" autocomplete="name"></div>
+        <div><label for="orderEmail">Email</label><input id="orderEmail" type="email" placeholder="you@example.com" autocomplete="email"></div>
+        <div><label for="deliveryMethod">Delivery option</label><select id="deliveryMethod"><option>Local pickup</option><option>Uber Eats (listing to be added)</option><option>DoorDash (listing to be added)</option></select></div>
+        <div class="full"><label for="paymentMethod">Payment preference</label><select id="paymentMethod"><option>Card (secure payment link to follow)</option><option>PayPal (payment request to follow)</option></select></div>
+      </div>
+      <p class="checkout-note">Payment is not taken on this page. We will confirm your order and send a secure payment request once your prices, delivery and availability are confirmed. Uber Eats and DoorDash selections are requests only until Shukies has active store listings; no card details are collected here.</p>
+      <button class="btn" id="checkoutButton" type="button">Send order enquiry ↗</button>
+    </div>
+  </aside>
+
+  <script>
+    const PRODUCTS = {
+      classic: { name: 'Choc Chip Classic', price: 5.50 },
+      double: { name: 'Double Choc', price: 6.00 },
+      biscoff: { name: 'Golden Biscoff', price: 6.50 },
+      surprise: { name: 'Weekly Surprise', price: 6.50 }
+    };
+    const CART_KEY = 'shukies-cookie-bag-v1';
+    let cart = {};
+    try { cart = JSON.parse(localStorage.getItem(CART_KEY) || '{}') || {}; } catch { cart = {}; }
+    const $ = (id) => document.getElementById(id);
+    const toast = $('toast');
+    let toastTimer;
+    function money(value) { return new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(value); }
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+    function saveCart() { try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch { /* Cart still works for this visit if storage is unavailable. */ } }
+    function countItems() { return Object.values(cart).reduce((sum, quantity) => sum + quantity, 0); }
+    function subtotal() { return Object.entries(cart).reduce((sum, [id, quantity]) => sum + (PRODUCTS[id]?.price || 0) * quantity, 0); }
+    function renderCart() {
+      $('cartCount').textContent = countItems();
+      $('cartTotal').textContent = money(subtotal());
+      const entries = Object.entries(cart).filter(([id, qty]) => PRODUCTS[id] && qty > 0);
+      if (!entries.length) {
+        $('cartItems').innerHTML = '<div class="empty-cart"><span>🍪</span>Your bag is waiting for something delicious.</div>';
+        return;
+      }
+      $('cartItems').innerHTML = entries.map(([id, qty]) => {
+        const p = PRODUCTS[id];
+        return `<div class="cart-row"><div><strong>${p.name}</strong><small>${money(p.price)} each</small><div class="qty"><button type="button" data-change="${id}" data-delta="-1" aria-label="Remove one ${p.name}">−</button><b>${qty}</b><button type="button" data-change="${id}" data-delta="1" aria-label="Add one ${p.name}">+</button></div></div><div class="cart-row-price">${money(p.price * qty)}</div></div>`;
+      }).join('');
+    }
+    function addToCart(id) {
+      if (!PRODUCTS[id]) return;
+      cart[id] = (cart[id] || 0) + 1;
+      saveCart(); renderCart(); showToast(`${PRODUCTS[id].name} added to your bag!`);
+    }
+    function openCart() {
+      $('cartPanel').classList.add('open'); $('cartOverlay').classList.add('open');
+      $('cartPanel').setAttribute('aria-hidden', 'false'); document.body.classList.add('locked'); $('closeCart').focus();
+    }
+    function closeCart() {
+      $('cartPanel').classList.remove('open'); $('cartOverlay').classList.remove('open');
+      $('cartPanel').setAttribute('aria-hidden', 'true'); document.body.classList.remove('locked'); $('openCart').focus();
+    }
+    document.querySelectorAll('.add').forEach(button => button.addEventListener('click', () => addToCart(button.dataset.id)));
+    $('openCart').addEventListener('click', openCart);
+    $('closeCart').addEventListener('click', closeCart);
+    $('cartOverlay').addEventListener('click', closeCart);
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && $('cartPanel').classList.contains('open')) closeCart(); });
+    $('cartItems').addEventListener('click', event => {
+      const button = event.target.closest('button[data-change]');
+      if (!button) return;
+      const id = button.dataset.change;
+      cart[id] = (cart[id] || 0) + Number(button.dataset.delta);
+      if (cart[id] <= 0) delete cart[id];
+      saveCart(); renderCart();
+    });
+    $('checkoutButton').addEventListener('click', () => {
+      const entries = Object.entries(cart).filter(([id, qty]) => PRODUCTS[id] && qty > 0);
+      if (!entries.length) { showToast('Add a cookie to your bag first.'); return; }
+      const name = $('orderName').value.trim();
+      const email = $('orderEmail').value.trim();
+      if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('Please add your name and a valid email.'); $('orderName').focus(); return; }
+      const lines = entries.map(([id, qty]) => `${qty} × ${PRODUCTS[id].name} — ${money(PRODUCTS[id].price * qty)}`);
+      const delivery = $('deliveryMethod').value;
+      const payment = $('paymentMethod').value;
+      const body = [
+        'Hi Shukies Cookies,', '', 'I would like to enquire about this sample order:', ...lines, '',
+        `Sample subtotal: ${money(subtotal())}`, `Name: ${name}`, `Email: ${email}`,
+        `Delivery preference: ${delivery}`, `Payment preference: ${payment}`, '',
+        'Please confirm availability, final pricing, ingredients/allergens, delivery arrangements and the secure payment process before I pay.',
+        'I understand Uber Eats and DoorDash are not active order links on the website yet.', '', 'Thanks!'
+      ].join('\n');
+      const subject = encodeURIComponent('Cookie order enquiry — Shukies Cookies');
+      const mailto = `mailto:max.shukla20@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+    $('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const subject = encodeURIComponent(`Shukies Cookies enquiry — ${data.get('reason')}`);
+      const body = encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\nTopic: ${data.get('reason')}\n\n${data.get('message')}`);
+      window.location.href = `mailto:max.shukla20@gmail.com?subject=${subject}&body=${body}`;
+    });
+    $('menuToggle').addEventListener('click', () => {
+      const open = $('mobileMenu').classList.toggle('open');
+      $('menuToggle').setAttribute('aria-expanded', String(open));
+      $('menuToggle').textContent = open ? '×' : '☰';
+    });
+    $('mobileMenu').querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      $('mobileMenu').classList.remove('open'); $('menuToggle').setAttribute('aria-expanded', 'false'); $('menuToggle').textContent = '☰';
+    }));
+    $('year').textContent = new Date().getFullYear();
+    renderCart();
+  </script>
+</body>
+</html>
